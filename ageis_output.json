@@ -1,0 +1,332 @@
+{
+    "timestamp": "2026-04-21T20:52:16.935641",
+    "phase_0": {
+        "dataset_source": {
+            "type": "adult_income_default",
+            "path": null
+        },
+        "dataset_info": {
+            "total_rows": 48842,
+            "total_columns": 15,
+            "columns": [
+                "age",
+                "workclass",
+                "fnlwgt",
+                "education",
+                "education_num",
+                "marital_status",
+                "occupation",
+                "relationship",
+                "race",
+                "sex",
+                "capital_gain",
+                "capital_loss",
+                "hours_per_week",
+                "native_country",
+                "income"
+            ],
+            "numerical_columns": [
+                "age",
+                "fnlwgt",
+                "education_num",
+                "capital_gain",
+                "capital_loss",
+                "hours_per_week"
+            ],
+            "categorical_columns": [
+                "workclass",
+                "education",
+                "marital_status",
+                "occupation",
+                "relationship",
+                "race",
+                "sex",
+                "native_country",
+                "income"
+            ],
+            "target_column": "income",
+            "data_types": {
+                "age": "int64",
+                "workclass": "object",
+                "fnlwgt": "int64",
+                "education": "object",
+                "education_num": "int64",
+                "marital_status": "object",
+                "occupation": "object",
+                "relationship": "object",
+                "race": "object",
+                "sex": "object",
+                "capital_gain": "int64",
+                "capital_loss": "int64",
+                "hours_per_week": "int64",
+                "native_country": "object",
+                "income": "object"
+            }
+        }
+    },
+    "phase_1": {
+        "preprocessing": {
+            "categorical_columns": [
+                "workclass",
+                "education",
+                "marital_status",
+                "occupation",
+                "relationship",
+                "race",
+                "sex",
+                "native_country",
+                "income"
+            ],
+            "numerical_columns": [
+                "age",
+                "fnlwgt",
+                "education_num",
+                "capital_gain",
+                "capital_loss",
+                "hours_per_week"
+            ],
+            "encoding_applied": "Label encoding applied to 9 categorical features"
+        }
+    },
+    "phase_2": {
+        "sensitive_features": {
+            "detected_features": [
+                "race",
+                "sex",
+                "native_country",
+                "marital_status"
+            ],
+            "detection_method": "LLM"
+        },
+        "fairness_metrics": {
+            "race": {
+                "Demographic Parity": 0.13317577877014827,
+                "Disparate Impact": 0.47565882219299216
+            },
+            "sex": {
+                "Demographic Parity": 0.19451574596420296,
+                "Disparate Impact": 0.3596552625800337
+            },
+            "native_country": {
+                "Demographic Parity": 0.002399808491446942,
+                "Disparate Impact": 0.990259600828833
+            },
+            "marital_status": {
+                "Demographic Parity": 0.40065260693950855,
+                "Disparate Impact": 0.10194263915271819
+            }
+        },
+        "distribution_bias": {
+            "race": {
+                "4": 85.5042791040498,
+                "2": 9.592154293435977,
+                "1": 3.1100282543712376,
+                "0": 0.9622865566520619,
+                "3": 0.83125179149093
+            },
+            "sex": {
+                "1": 66.84820441423365,
+                "0": 33.151795585766344
+            },
+            "native_country": {
+                "39": 89.74243478973015,
+                "26": 1.9470947135661931,
+                "0": 1.7546374022357807,
+                "30": 0.6039883706645919,
+                "11": 0.421768150362393,
+                "33": 0.37672494983825394,
+                "2": 0.3726301134269686,
+                "8": 0.31734982187461613,
+                "19": 0.30916014905204536,
+                "5": 0.28254371237869047,
+                "9": 0.2600221121166209,
+                "3": 0.24978502108840753,
+                "35": 0.23545309364890873,
+                "23": 0.21702632979812456,
+                "22": 0.2149789115924819,
+                "6": 0.2108840751811965,
+                "24": 0.18836247491912697,
+                "13": 0.18017280209655626,
+                "31": 0.17812538389091356,
+                "40": 0.17607796568527087,
+                "4": 0.17403054747962818,
+                "14": 0.15355636542320134,
+                "32": 0.13717701977805985,
+                "36": 0.1330821833667745,
+                "20": 0.12079767413291839,
+                "12": 0.10032349207649155,
+                "27": 0.10032349207649155,
+                "29": 0.09418123745956349,
+                "7": 0.0921338192539208,
+                "10": 0.07780189181442201,
+                "21": 0.07575447360877934,
+                "17": 0.061422546169280536,
+                "37": 0.061422546169280536,
+                "1": 0.05732770975799517,
+                "38": 0.055280291552352485,
+                "25": 0.04709061872978174,
+                "41": 0.04709061872978174,
+                "28": 0.04709061872978174,
+                "34": 0.04299578231849638,
+                "16": 0.04094836411285369,
+                "18": 0.03890094590721101,
+                "15": 0.002047418205642685
+            },
+            "marital_status": {
+                "2": 45.81917202407764,
+                "4": 32.998239220343144,
+                "0": 13.580524958027926,
+                "5": 3.1325498546333077,
+                "6": 3.1079808361655954,
+                "3": 1.2857786331436059,
+                "1": 0.07575447360877934
+            }
+        },
+        "outcome_disparity": {
+            "race": {
+                "0": {
+                    "0": 88.29787234042553,
+                    "1": 73.07439104674127,
+                    "2": 87.91889007470651,
+                    "3": 87.68472906403942,
+                    "4": 74.60131219769168
+                },
+                "1": {
+                    "0": 11.702127659574469,
+                    "1": 26.925608953258724,
+                    "2": 12.08110992529349,
+                    "3": 12.31527093596059,
+                    "4": 25.398687802308316
+                }
+            },
+            "sex": {
+                "0": {
+                    "0": 89.07485177865613,
+                    "1": 69.62327718223584
+                },
+                "1": {
+                    "0": 10.925148221343873,
+                    "1": 30.37672281776417
+                }
+            },
+            "native_country": {
+                "0": {
+                    "0": 74.32905484247374,
+                    "1": 67.85714285714286,
+                    "2": 65.38461538461539,
+                    "3": 70.49180327868852,
+                    "4": 95.29411764705881,
+                    "5": 75.36231884057972,
+                    "6": 95.14563106796116,
+                    "7": 86.66666666666667,
+                    "8": 92.90322580645162,
+                    "9": 62.99212598425197,
+                    "10": 57.89473684210527,
+                    "11": 71.84466019417476,
+                    "12": 63.26530612244898,
+                    "13": 96.5909090909091,
+                    "14": 88.0,
+                    "15": 100.0,
+                    "16": 90.0,
+                    "17": 73.33333333333333,
+                    "18": 68.42105263157895,
+                    "19": 58.94039735099338,
+                    "20": 62.71186440677966,
+                    "21": 70.27027027027027,
+                    "22": 67.61904761904762,
+                    "23": 85.84905660377359,
+                    "24": 65.21739130434783,
+                    "25": 91.30434782608695,
+                    "26": 95.05783385909568,
+                    "27": 93.87755102040816,
+                    "28": 95.65217391304348,
+                    "29": 91.30434782608695,
+                    "30": 71.1864406779661,
+                    "31": 80.45977011494253,
+                    "32": 82.08955223880598,
+                    "33": 89.13043478260869,
+                    "34": 85.71428571428571,
+                    "35": 82.6086956521739,
+                    "36": 60.0,
+                    "37": 83.33333333333334,
+                    "38": 92.5925925925926,
+                    "39": 75.6022996897244,
+                    "40": 91.86046511627907,
+                    "41": 65.21739130434783
+                },
+                "1": {
+                    "0": 25.670945157526255,
+                    "1": 32.142857142857146,
+                    "2": 34.61538461538461,
+                    "3": 29.508196721311474,
+                    "4": 4.705882352941177,
+                    "5": 24.637681159420293,
+                    "6": 4.854368932038835,
+                    "7": 13.333333333333334,
+                    "8": 7.096774193548387,
+                    "9": 37.00787401574803,
+                    "10": 42.10526315789473,
+                    "11": 28.155339805825243,
+                    "12": 36.734693877551024,
+                    "13": 3.4090909090909087,
+                    "14": 12.0,
+                    "15": 0.0,
+                    "16": 10.0,
+                    "17": 26.666666666666668,
+                    "18": 31.57894736842105,
+                    "19": 41.05960264900662,
+                    "20": 37.28813559322034,
+                    "21": 29.72972972972973,
+                    "22": 32.38095238095238,
+                    "23": 14.150943396226415,
+                    "24": 34.78260869565217,
+                    "25": 8.695652173913043,
+                    "26": 4.942166140904311,
+                    "27": 6.122448979591836,
+                    "28": 4.3478260869565215,
+                    "29": 8.695652173913043,
+                    "30": 28.8135593220339,
+                    "31": 19.54022988505747,
+                    "32": 17.91044776119403,
+                    "33": 10.869565217391305,
+                    "34": 14.285714285714285,
+                    "35": 17.391304347826086,
+                    "36": 40.0,
+                    "37": 16.666666666666664,
+                    "38": 7.4074074074074066,
+                    "39": 24.397700310275596,
+                    "40": 8.13953488372093,
+                    "41": 34.78260869565217
+                }
+            },
+            "marital_status": {
+                "0": {
+                    "0": 89.88391376451078,
+                    "1": 62.16216216216216,
+                    "2": 55.38674650341838,
+                    "3": 90.76433121019109,
+                    "4": 95.45200719736924,
+                    "5": 93.52941176470588,
+                    "6": 91.56785243741766
+                },
+                "1": {
+                    "0": 10.11608623548922,
+                    "1": 37.83783783783784,
+                    "2": 44.61325349658162,
+                    "3": 9.235668789808917,
+                    "4": 4.5479928026307626,
+                    "5": 6.470588235294119,
+                    "6": 8.432147562582346
+                }
+            }
+        },
+        "llm_explanation": "Based on the fairness metrics provided, we can analyze the situation as follows:\n\n**Is there bias?**\n\nYes, there appears to be bias in the decision-making process. The values for both 'Demographic Parity' and 'Disparate Impact' metrics are not close to the ideal value of 1 (or 100%). This suggests that the model is not treating different groups equally.\n\n**Which group is affected?**\n\nThe fairness metrics are provided for four groups: 'race', 'sex', 'native_country', and 'marital_status'. We can see which groups are affected by examining the values of 'Demographic Parity' and 'Disparate Impact' metrics for each group.\n\n- **'native_country'**: The 'Disparate Impact' value (0.990259600828833) is very close to 1, suggesting that the model treats the 'native_country' group fairly well on average. However, the 'Demographic Parity' value (0.002399808491446942) is very low, suggesting that there might be problems with positive or negative cases not correctly captured in the group.\n\n- **'marital_status'**: The 'Disparate Impact' value (0.10194263915271819) is lower than 0.5, indicating a disparate impact, meaning that the model is more unfair to this group.\n\n- **'race' and 'sex'**: These groups have both 'Demographic Parity' and 'Disparate Impact' values that are not near to 1, indicating that they are likely to be affected by bias as well.\n\n**Why it matters?**\n\nFairness matters for several reasons:\n\n1. **Social Justice**: Ensuring fairness in decision-making processes is essential for promoting social justice and preventing discrimination against marginalized groups.\n\n2. **Trust**: When models are found to be biased, it erodes trust in the decision-making process and can lead to negative social and economic consequences.\n\n3. **Accurately predicting outcomes**: Biased models can lead to inaccurate predictions, which can harm individuals and societies as a whole.\n\nTo mitigate bias, you can:\n\n- Regularly audit models for fairness\n- Use fairness metrics to monitor behavior over time\n- Design experiments to test fairness under different conditions\n\nIn this specific case, you can start by revisiting your data collection process to ensure that there are no biases in the data itself. Once you've addressed data issues, retrain your model with a focus on fairness. This might involve using techniques such as adversarial training or learning fairness-aware objectives."
+    },
+    "summary": {
+        "pipeline_status": {
+            "status": "success",
+            "message": "Analysis completed successfully",
+            "completion_time": "2026-04-21T20:53:35.247171"
+        }
+    }
+}
