@@ -7,8 +7,8 @@ from src.phase0.preprocessing import preprocess_dataset
 from src.phase0.inspector import BiasInspector
 from src.phase0.llm_handler import LLMHandler
 
-# SET YOUR API KEY
-os.environ["GROQ_API_KEY"] = "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"
+# NOTE: Set your GROQ_API_KEY environment variable before running this script
+# export GROQ_API_KEY=your_actual_key_here
 
 print("=" * 60)
 print("🚀 AGEIS - Bias Detection & Fairness Analysis Pipeline")
