@@ -1,0 +1,32 @@
+# AEGIS — Requirements
+# Core dependencies
+pandas>=1.5.0
+numpy>=1.23.0
+scikit-learn>=1.2.0
+python-dotenv>=1.0.0
+
+# Visualization
+matplotlib>=3.6.0
+seaborn>=0.12.0
+
+# Model serialization
+joblib>=1.2.0
+
+# Gemini LLM framework using LangChain
+langchain-core>=0.2.0
+langchain-google-genai>=1.0.0
+
+# Optional: enhanced mitigation
+fairlearn>=0.8.0
+
+# Optional: SHAP explainability
+# shap>=0.42.0
+
+# Optional: statistical tests
+scipy>=1.10.0
+
+# Optional: SMOTE oversampling
+# imbalanced-learn>=0.10.0
+
+# Optional: XGBoost
+# xgboost>=1.7.0
