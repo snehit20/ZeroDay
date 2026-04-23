@@ -1,5 +1,5 @@
 {
-    "timestamp": "2026-04-21T20:52:16.935641",
+    "timestamp": "2026-04-23T17:33:20.932165",
     "phase_0": {
         "dataset_source": {
             "type": "adult_income_default",
@@ -47,20 +47,20 @@
             "target_column": "income",
             "data_types": {
                 "age": "int64",
-                "workclass": "object",
+                "workclass": "str",
                 "fnlwgt": "int64",
-                "education": "object",
+                "education": "str",
                 "education_num": "int64",
-                "marital_status": "object",
-                "occupation": "object",
-                "relationship": "object",
-                "race": "object",
-                "sex": "object",
+                "marital_status": "str",
+                "occupation": "str",
+                "relationship": "str",
+                "race": "str",
+                "sex": "str",
                 "capital_gain": "int64",
                 "capital_loss": "int64",
                 "hours_per_week": "int64",
-                "native_country": "object",
-                "income": "object"
+                "native_country": "str",
+                "income": "str"
             }
         }
     },
@@ -91,32 +91,41 @@
     "phase_2": {
         "sensitive_features": {
             "detected_features": [
-                "race",
                 "sex",
-                "native_country",
-                "marital_status"
+                "race",
+                "marital_status",
+                "relationship",
+                "native_country"
             ],
             "detection_method": "LLM"
         },
         "fairness_metrics": {
-            "race": {
-                "Demographic Parity": 0.13317577877014827,
-                "Disparate Impact": 0.47565882219299216
-            },
             "sex": {
                 "Demographic Parity": 0.19451574596420296,
                 "Disparate Impact": 0.3596552625800337
             },
-            "native_country": {
-                "Demographic Parity": 0.002399808491446942,
-                "Disparate Impact": 0.990259600828833
+            "race": {
+                "Demographic Parity": 0.13317577877014827,
+                "Disparate Impact": 0.47565882219299216
             },
             "marital_status": {
                 "Demographic Parity": 0.40065260693950855,
                 "Disparate Impact": 0.10194263915271819
+            },
+            "relationship": {
+                "Demographic Parity": 0.3472644702675956,
+                "Disparate Impact": 0.22601556683292845
+            },
+            "native_country": {
+                "Demographic Parity": 0.002399808491446942,
+                "Disparate Impact": 0.990259600828833
             }
         },
         "distribution_bias": {
+            "sex": {
+                "1": 66.84820441423365,
+                "0": 33.151795585766344
+            },
             "race": {
                 "4": 85.5042791040498,
                 "2": 9.592154293435977,
@@ -124,9 +133,22 @@
                 "0": 0.9622865566520619,
                 "3": 0.83125179149093
             },
-            "sex": {
-                "1": 66.84820441423365,
-                "0": 33.151795585766344
+            "marital_status": {
+                "2": 45.81917202407764,
+                "4": 32.998239220343144,
+                "0": 13.580524958027926,
+                "5": 3.1325498546333077,
+                "6": 3.1079808361655954,
+                "3": 1.2857786331436059,
+                "1": 0.07575447360877934
+            },
+            "relationship": {
+                "0": 40.36689734245117,
+                "1": 25.7626632816019,
+                "3": 15.521477416977191,
+                "4": 10.493018303918758,
+                "5": 4.772531837353098,
+                "2": 3.0834118176978826
             },
             "native_country": {
                 "39": 89.74243478973015,
@@ -160,8 +182,8 @@
                 "7": 0.0921338192539208,
                 "10": 0.07780189181442201,
                 "21": 0.07575447360877934,
-                "17": 0.061422546169280536,
                 "37": 0.061422546169280536,
+                "17": 0.061422546169280536,
                 "1": 0.05732770975799517,
                 "38": 0.055280291552352485,
                 "25": 0.04709061872978174,
@@ -171,18 +193,19 @@
                 "16": 0.04094836411285369,
                 "18": 0.03890094590721101,
                 "15": 0.002047418205642685
-            },
-            "marital_status": {
-                "2": 45.81917202407764,
-                "4": 32.998239220343144,
-                "0": 13.580524958027926,
-                "5": 3.1325498546333077,
-                "6": 3.1079808361655954,
-                "3": 1.2857786331436059,
-                "1": 0.07575447360877934
             }
         },
         "outcome_disparity": {
+            "sex": {
+                "0": {
+                    "0": 89.07485177865613,
+                    "1": 69.62327718223584
+                },
+                "1": {
+                    "0": 10.925148221343873,
+                    "1": 30.37672281776417
+                }
+            },
             "race": {
                 "0": {
                     "0": 88.29787234042553,
@@ -199,14 +222,42 @@
                     "4": 25.398687802308316
                 }
             },
-            "sex": {
+            "marital_status": {
                 "0": {
-                    "0": 89.07485177865613,
-                    "1": 69.62327718223584
+                    "0": 89.88391376451078,
+                    "1": 62.16216216216216,
+                    "2": 55.38674650341838,
+                    "3": 90.76433121019109,
+                    "4": 95.45200719736924,
+                    "5": 93.52941176470588,
+                    "6": 91.56785243741766
                 },
                 "1": {
-                    "0": 10.925148221343873,
-                    "1": 30.37672281776417
+                    "0": 10.11608623548922,
+                    "1": 37.83783783783784,
+                    "2": 44.61325349658162,
+                    "3": 9.235668789808917,
+                    "4": 4.5479928026307626,
+                    "5": 6.470588235294119,
+                    "6": 8.432147562582346
+                }
+            },
+            "relationship": {
+                "0": {
+                    "0": 55.13288699533374,
+                    "1": 89.8593340220933,
+                    "2": 96.54714475431607,
+                    "3": 98.53581321725366,
+                    "4": 93.97073170731707,
+                    "5": 53.11025311025311
+                },
+                "1": {
+                    "0": 44.86711300466626,
+                    "1": 10.1406659779067,
+                    "2": 3.4528552456839305,
+                    "3": 1.4641867827463395,
+                    "4": 6.029268292682927,
+                    "5": 46.88974688974689
                 }
             },
             "native_country": {
@@ -298,35 +349,15 @@
                     "40": 8.13953488372093,
                     "41": 34.78260869565217
                 }
-            },
-            "marital_status": {
-                "0": {
-                    "0": 89.88391376451078,
-                    "1": 62.16216216216216,
-                    "2": 55.38674650341838,
-                    "3": 90.76433121019109,
-                    "4": 95.45200719736924,
-                    "5": 93.52941176470588,
-                    "6": 91.56785243741766
-                },
-                "1": {
-                    "0": 10.11608623548922,
-                    "1": 37.83783783783784,
-                    "2": 44.61325349658162,
-                    "3": 9.235668789808917,
-                    "4": 4.5479928026307626,
-                    "5": 6.470588235294119,
-                    "6": 8.432147562582346
-                }
             }
         },
-        "llm_explanation": "Based on the fairness metrics provided, we can analyze the situation as follows:\n\n**Is there bias?**\n\nYes, there appears to be bias in the decision-making process. The values for both 'Demographic Parity' and 'Disparate Impact' metrics are not close to the ideal value of 1 (or 100%). This suggests that the model is not treating different groups equally.\n\n**Which group is affected?**\n\nThe fairness metrics are provided for four groups: 'race', 'sex', 'native_country', and 'marital_status'. We can see which groups are affected by examining the values of 'Demographic Parity' and 'Disparate Impact' metrics for each group.\n\n- **'native_country'**: The 'Disparate Impact' value (0.990259600828833) is very close to 1, suggesting that the model treats the 'native_country' group fairly well on average. However, the 'Demographic Parity' value (0.002399808491446942) is very low, suggesting that there might be problems with positive or negative cases not correctly captured in the group.\n\n- **'marital_status'**: The 'Disparate Impact' value (0.10194263915271819) is lower than 0.5, indicating a disparate impact, meaning that the model is more unfair to this group.\n\n- **'race' and 'sex'**: These groups have both 'Demographic Parity' and 'Disparate Impact' values that are not near to 1, indicating that they are likely to be affected by bias as well.\n\n**Why it matters?**\n\nFairness matters for several reasons:\n\n1. **Social Justice**: Ensuring fairness in decision-making processes is essential for promoting social justice and preventing discrimination against marginalized groups.\n\n2. **Trust**: When models are found to be biased, it erodes trust in the decision-making process and can lead to negative social and economic consequences.\n\n3. **Accurately predicting outcomes**: Biased models can lead to inaccurate predictions, which can harm individuals and societies as a whole.\n\nTo mitigate bias, you can:\n\n- Regularly audit models for fairness\n- Use fairness metrics to monitor behavior over time\n- Design experiments to test fairness under different conditions\n\nIn this specific case, you can start by revisiting your data collection process to ensure that there are no biases in the data itself. Once you've addressed data issues, retrain your model with a focus on fairness. This might involve using techniques such as adversarial training or learning fairness-aware objectives."
+        "llm_explanation": "Based on the fairness metrics provided, let's analyze the results and answer the questions.\n\n### Is there bias?\n\nThe presence of bias can be determined by checking the values of the metrics. Here are the key insights:\n\n- **Demographic Parity (DP)**: This metric measures whether the probability of being in the positive class (e.g., accepted for a loan) is equal for different groups. A value close to 0 indicates a perfect balance, while values far from 0 indicate bias.\n\n- **Disparate Impact (DI)**: This metric measures the ratio of the probability of being in the positive class for different groups compared to the majority group. A value close to 1 indicates no bias, while values far from 1 indicate bias.\n\nIn the given metrics:\n- **'sex'**: The Demographic Parity for 'sex' is 0.1945 and the Disparate Impact is 0.3597, indicating a slight bias against one of the groups (possibly males).\n- **'race'**: The Demographic Parity for 'race' is 0.1332 and the Disparate Impact is 0.4757, indicating a significant bias against one of the groups (possibly certain racial groups).\n- **'marital_status'**: The Demographic Parity for 'marital_status' is 0.4006 and the Disparate Impact is 0.1015, indicating a slight bias against one of the groups (possibly unmarried individuals).\n- **'relationship'**: The Demographic Parity for 'relationship' is 0.3473 and the Disparate Impact is 0.226, indicating a slight bias against one of the groups (possibly certain relationship groups).\n- **'native_country'**: The Demographic Parity for 'native_country' is 0.0024 and the Disparate Impact is 0.9903, indicating significant bias against certain 'native_country' groups.\n\nFrom these observations, it appears there is bias in the model's decision-making process across all sensitive attributes.\n\n### Which group is affected?\n\nBased on the significant Disparate Impact values, the following groups are potentially being treated unfairly:\n\n- Racial groups ('race') with a Disparate Impact of 0.4757\n- Individuals from certain 'native_country' with a Disparate Impact of 0.9903\n- Males ('sex') with a Disparate Impact of 0.3597\n- Unmarried individuals ('marital_status') with a Disparate Impact of 0.1015\n- Certain relationship groups ('relationship') with a Disparate Impact of 0.2260\n\n### Why it matters?\n\nModel bias can result in serious consequences, including:\n\n- **Distributing unfair resources**: A biased model may allocate resources or benefits unfairly among protected groups.\n- **Perpetuating systemic issues**: If the model reflects and reinforces existing biases, it may exacerbate existing inequalities and contribute to their perpetuation.\n- **Eroding trust**: Unfair treatment of certain groups can erode the trust they have in the organization, system, or model.\n\nAddressing model bias is critical to promote fairness, equity, and inclusivity in decision-making processes.\n\nRecommendations to mitigate these biases include:\n\n- Collecting and analyzing diverse data sets to reduce the presence of biases\n- Regularly evaluating the performance of sensitive attributes to detect and address fairness issues\n- Implementing regularization techniques and fairness objectives to guide model development\n- Engaging with stakeholders, including affected groups, to understand the context and provide input in fairness assessments\n\nBy addressing these biases and following best practices in fairness and transparency, you can build a more inclusive and equitable AI model."
     },
     "summary": {
         "pipeline_status": {
             "status": "success",
             "message": "Analysis completed successfully",
-            "completion_time": "2026-04-21T20:53:35.247171"
+            "completion_time": "2026-04-23T17:33:31.924612"
         }
     }
 }
