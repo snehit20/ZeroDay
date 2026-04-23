@@ -66,11 +66,11 @@ export function TradeoffChart({ data, title }: TradeoffChartProps) {
           />
           <ReferenceLine y={0.05} stroke="#22c55e" strokeDasharray="4 4" strokeOpacity={0.5} />
           <Tooltip content={<CustomTooltip />} />
-          <Scatter data={chartData} fill="#6366f1">
+          <Scatter data={chartData} fill="#2563eb">
             {chartData.map((entry, i) => (
               <Cell
                 key={i}
-                fill={entry.rank === 1 ? "#22c55e" : entry.strategy === "baseline" ? "#ef4444" : "#6366f1"}
+                fill={entry.rank === 1 ? "#10b981" : entry.strategy === "baseline" ? "#ef4444" : "#2563eb"}
                 fillOpacity={entry.rank === 1 ? 1 : 0.6}
                 r={entry.rank === 1 ? 8 : 5}
               />
@@ -80,13 +80,13 @@ export function TradeoffChart({ data, title }: TradeoffChartProps) {
       </ResponsiveContainer>
       <div className="flex items-center justify-center gap-6 mt-2">
         <div className="flex items-center gap-1.5 text-[10px] text-[var(--color-text-muted)]">
-          <div className="w-2.5 h-2.5 rounded-full bg-[#22c55e]" /> Best Strategy
+          <div className="w-2.5 h-2.5 rounded-full bg-[#10b981]" /> Best Strategy
         </div>
         <div className="flex items-center gap-1.5 text-[10px] text-[var(--color-text-muted)]">
           <div className="w-2.5 h-2.5 rounded-full bg-[#ef4444]" /> Baseline
         </div>
         <div className="flex items-center gap-1.5 text-[10px] text-[var(--color-text-muted)]">
-          <div className="w-2.5 h-2.5 rounded-full bg-[#6366f1]" /> Other
+          <div className="w-2.5 h-2.5 rounded-full bg-[#2563eb]" /> Other
         </div>
       </div>
     </div>

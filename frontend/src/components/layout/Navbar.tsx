@@ -1,15 +1,16 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import { Shield, BarChart3, Upload, FileText } from "lucide-react";
+import { BarChart3, Upload, LayoutDashboard } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
-  { href: "/", label: "Home", icon: Shield },
+  { href: "/", label: "Home", icon: LayoutDashboard },
   { href: "/upload", label: "Upload", icon: Upload },
-  { href: "/results", label: "Results", icon: BarChart3 },
+  { href: "/results", label: "Dashboard", icon: BarChart3 },
 ];
 
 export default function Navbar() {
@@ -23,11 +24,15 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="w-8 h-8 rounded-lg bg-[var(--color-accent)] flex items-center justify-center">
-            <Shield className="w-4.5 h-4.5 text-white" />
-          </div>
-          <span className="text-lg font-semibold tracking-tight">
+        <Link href="/" className="flex items-center gap-3 group">
+          <Image
+            src="/logo.jpeg"
+            alt="AEGIS"
+            width={32}
+            height={32}
+            className="rounded-lg"
+          />
+          <span className="text-lg font-bold tracking-tight">
             AEGIS
           </span>
         </Link>
@@ -42,7 +47,7 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "relative flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors",
+                  "relative flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200",
                   isActive
                     ? "text-[var(--color-text-primary)]"
                     : "text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)]"
@@ -62,10 +67,10 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Status */}
+        {/* Status Indicator */}
         <div className="flex items-center gap-2 text-xs text-[var(--color-text-muted)]">
-          <div className="w-2 h-2 rounded-full bg-[var(--color-success)] animate-pulse" />
-          Pipeline Ready
+          <div className="w-1.5 h-1.5 rounded-full bg-[var(--color-success)] animate-pulse" />
+          Engine Online
         </div>
       </div>
     </motion.header>

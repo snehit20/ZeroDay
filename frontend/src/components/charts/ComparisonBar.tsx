@@ -63,8 +63,8 @@ export function ComparisonBar({ data, title, labelBefore = "Before", labelAfter 
             iconType="circle"
             iconSize={8}
           />
-          <Bar dataKey="before" name={labelBefore} fill="#6366f1" radius={[3, 3, 0, 0]} maxBarSize={28} fillOpacity={0.5} />
-          <Bar dataKey="after" name={labelAfter} fill="#22c55e" radius={[3, 3, 0, 0]} maxBarSize={28} fillOpacity={0.8} />
+          <Bar dataKey="before" name={labelBefore} fill="#2563eb" radius={[3, 3, 0, 0]} maxBarSize={28} fillOpacity={0.5} />
+          <Bar dataKey="after" name={labelAfter} fill="#10b981" radius={[3, 3, 0, 0]} maxBarSize={28} fillOpacity={0.8} />
         </BarChart>
       </ResponsiveContainer>
     </div>

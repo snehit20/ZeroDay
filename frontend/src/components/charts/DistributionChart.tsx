@@ -10,7 +10,7 @@ interface DistributionChartProps {
   color?: string;
 }
 
-const COLORS = ["#6366f1", "#818cf8", "#a78bfa", "#c4b5fd", "#8b5cf6", "#7c3aed", "#5b21b6"];
+const COLORS = ["#2563eb", "#3b82f6", "#60a5fa", "#93c5fd", "#06b6d4", "#0891b2", "#1d4ed8"];
 
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (!active || !payload?.length) return null;

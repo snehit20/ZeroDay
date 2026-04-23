@@ -68,7 +68,7 @@ export function FeatureImportance({ baseline, best, title }: FeatureImportancePr
           <Bar
             dataKey="baseline"
             name="Baseline"
-            fill="#6366f1"
+            fill="#2563eb"
             fillOpacity={0.3}
             radius={[0, 3, 3, 0]}
             barSize={12}
@@ -76,7 +76,7 @@ export function FeatureImportance({ baseline, best, title }: FeatureImportancePr
           <Bar
             dataKey="mitigated"
             name="Mitigated"
-            fill="#22c55e"
+            fill="#10b981"
             fillOpacity={0.8}
             radius={[0, 3, 3, 0]}
             barSize={12}

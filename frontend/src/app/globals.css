@@ -1,26 +1,35 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #09090b;
-  --color-surface: #111113;
-  --color-surface-hover: #18181b;
-  --color-surface-elevated: #1c1c1f;
-  --color-border: #27272a;
-  --color-border-subtle: #1e1e21;
-  --color-text-primary: #fafafa;
-  --color-text-secondary: #a1a1aa;
-  --color-text-muted: #71717a;
-  --color-accent: #6366f1;
-  --color-accent-hover: #818cf8;
-  --color-accent-muted: rgba(99, 102, 241, 0.15);
-  --color-success: #22c55e;
-  --color-success-muted: rgba(34, 197, 94, 0.15);
+  /* ─── Surfaces ─── */
+  --color-background: #06070a;
+  --color-surface: #0c0d12;
+  --color-surface-hover: #13141a;
+  --color-surface-elevated: #191a22;
+  --color-border: #1e2030;
+  --color-border-subtle: #161825;
+
+  /* ─── Text ─── */
+  --color-text-primary: #f0f2f8;
+  --color-text-secondary: #9ba1b7;
+  --color-text-muted: #5c6280;
+
+  /* ─── Brand Accent (matches logo gradient) ─── */
+  --color-accent: #2563eb;
+  --color-accent-hover: #3b82f6;
+  --color-accent-muted: rgba(37, 99, 235, 0.12);
+
+  /* ─── Semantic ─── */
+  --color-success: #10b981;
+  --color-success-muted: rgba(16, 185, 129, 0.1);
   --color-warning: #f59e0b;
-  --color-warning-muted: rgba(245, 158, 11, 0.15);
+  --color-warning-muted: rgba(245, 158, 11, 0.1);
   --color-danger: #ef4444;
-  --color-danger-muted: rgba(239, 68, 68, 0.15);
-  --color-info: #3b82f6;
-  --color-info-muted: rgba(59, 130, 246, 0.15);
+  --color-danger-muted: rgba(239, 68, 68, 0.1);
+  --color-info: #06b6d4;
+  --color-info-muted: rgba(6, 182, 212, 0.1);
+
+  /* ─── Typography ─── */
   --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 }
@@ -38,70 +47,67 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
+  /* ─── Scrollbar ─── */
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--color-text-muted); }
 
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: var(--color-border);
-    border-radius: 3px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-text-muted);
+  /* ─── Selection ─── */
+  ::selection {
+    background: rgba(37, 99, 235, 0.3);
+    color: #fff;
   }
 }
 
 @layer utilities {
+  /* ─── Glass ─── */
   .glass {
-    background: rgba(17, 17, 19, 0.7);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: rgba(12, 13, 18, 0.75);
+    backdrop-filter: blur(20px) saturate(1.4);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
     border: 1px solid var(--color-border);
   }
-
   .glass-hover:hover {
-    background: rgba(24, 24, 27, 0.8);
+    background: rgba(19, 20, 26, 0.85);
     border-color: var(--color-accent);
   }
 
+  /* ─── Gradients ─── */
   .gradient-text {
-    background: linear-gradient(135deg, #6366f1, #818cf8, #a78bfa);
+    background: linear-gradient(135deg, #2563eb, #3b82f6, #06b6d4);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-
   .gradient-border {
     border: 1px solid transparent;
     background-image: linear-gradient(var(--color-surface), var(--color-surface)),
-                      linear-gradient(135deg, #6366f1, #818cf8);
+                      linear-gradient(135deg, #2563eb, #06b6d4);
     background-origin: border-box;
     background-clip: padding-box, border-box;
   }
 
+  /* ─── Glow ─── */
   .glow {
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.15),
-                0 0 60px rgba(99, 102, 241, 0.05);
+    box-shadow: 0 0 24px rgba(37, 99, 235, 0.2),
+                0 0 64px rgba(37, 99, 235, 0.06);
   }
-
   .glow-sm {
-    box-shadow: 0 0 10px rgba(99, 102, 241, 0.1);
+    box-shadow: 0 0 12px rgba(37, 99, 235, 0.12);
+  }
+  .glow-success {
+    box-shadow: 0 0 16px rgba(16, 185, 129, 0.15);
   }
 
+  /* ─── Grid Background ─── */
   .animate-grid {
-    background-size: 60px 60px;
+    background-size: 64px 64px;
     background-image:
-      linear-gradient(to right, rgba(99, 102, 241, 0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+      linear-gradient(to right, rgba(37, 99, 235, 0.025) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(37, 99, 235, 0.025) 1px, transparent 1px);
   }
 
-  .text-balance {
-    text-wrap: balance;
-  }
+  /* ─── Utility ─── */
+  .text-balance { text-wrap: balance; }
 }
